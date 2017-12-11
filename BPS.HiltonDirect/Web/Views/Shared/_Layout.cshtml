@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render("~/bundles/Content")
+</head>
+<body>
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <img src="~/Content/images/HiltonBrands.png" style="width: 100%; padding-top: 10px;" />
+                </div>
+            </div>
+        </div>
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/scripts")
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

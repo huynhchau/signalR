@@ -1,0 +1,12 @@
+﻿<div name="bpsContextMenu" style="height:100%" dropdown ng-click="additionalAction($event)" is-open="status.isOpen" ng-show="items != null && items.length > 0">
+    <a href="javascript:void(0)" class="dropdown-toggle ms-ellipsis-a" dropdown-toggle>
+        <i class="fa fa-ellipsis-h"></i>
+    </a>
+    <ul class="dropdown-menu">
+        <li ng-repeat="item in items">
+            <a tabindex="-1" href="javascript:void(0)" ng-if="!item.ConfirmAction" ng-click="item.Action(obj)">{{item.Title}}</a>
+            <a tabindex="-1" href="javascript:void(0)" ng-if="item.ConfirmAction" bps-confirm-active="true"
+               bps-confirm-action="item.Action(obj)" bps-confirm-message="confirm_delete">{{item.Title}}</a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,37 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div ng-show="hasPermission == true">
+            <button type="button" ng-click="createRequest()" class="btn btn-default">{{::"create_request" | bpsLocalize}}</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="entity-list">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="col-md-1" ngo-browse-th col-name="Id" sort="sort">{{ ::"id" | bpsLocalize }}</th>
+                        <th class="xs-header"></th>
+                        <th class="col-md-3" ngo-browse-th col-name="Admin1.Name" sort="sort">{{ ::"admin1" | bpsLocalize }}</th>
+                        <th class="col-md-3" ngo-browse-th col-name="SPR.Name" sort="sort">{{ ::"spr" | bpsLocalize }}</th>
+                        <th class="col-md-5" ngo-browse-th col-name="TaskDueDate" sort="sort">{{ ::"due_date" | bpsLocalize }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in browseItems | filter: filterFn | orderBy: sort.predicate: sort.reverse">
+                        <td ng-bind-html="item.Id | highlight : query"></td>
+                        <td class="menu-dots" bps-context-menu="item" style="position: relative;"></td>
+                        <td ng-bind-html="item.Admin1.Name | highlight : query"></td>
+                        <td ng-bind-html="item.SPR.Name | highlight : query"></td>
+                        <td ng-bind-html="item.TaskDueDate | bpsDateFormat" class="date-transform"></td>
+                    </tr>
+                    <tr ng-if="browseItems.length == 0">
+                        <td colspan="12" ng-bind-html=" ::'no_items_found' | bpsLocalize"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

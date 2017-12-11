@@ -1,0 +1,23 @@
+﻿<div ng-class="className" class="dialog-notification">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">X</span></button>
+        <h4 class="modal-title"><span ng-class="iconClass"></span> <span ng-bind-html="formTitle"></span></h4>
+    </div>
+
+    <div class="modal-body">
+        <span ng-class="classText" ng-bind-html="message | bpsUnsafe"></span>
+        <div ng-show="details" ng-class="classText">
+            <div>{{::"fields_missing_error" | bpsLocalize}}</div>
+            <ul id="error-details"></ul>
+        </div>
+    </div>
+
+    <div class="modal-footer" ng-if="isOkCancel">
+        <button type="button" class="btn btn-default" ng-click="close()">{{::'ok' | bpsLocalize}}</button>
+        <button type="button" class="btn btn-default" ng-click="cancel()">{{::'cancel' | bpsLocalize}}</button>
+    </div>
+
+    <div class="modal-footer" ng-if="!isOkCancel">
+        <button type="button" class="btn btn-default" ng-click="cancel()">{{::'close' | bpsLocalize}}</button>
+    </div>
+</div>

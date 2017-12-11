@@ -1,0 +1,190 @@
+﻿body {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+}
+
+#mainbody {
+    background-color: silver;
+}
+
+body, .dropdown-menu, .btn, .form-control {
+    font-size: 12px;
+}
+
+.form-control
+{
+    height: 31px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #fff;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Set padding to display errors that occur during databinding */
+.padding-error {
+    padding-top: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+    .nofloat {
+        float: none;
+        padding: 10px 15px;
+    }
+}
+
+.form-group .control-label {
+    font-weight: normal;
+    text-align: left;
+}
+
+.header
+{
+    padding: 15px;
+}
+
+.form-title {
+    font-family: Verdana;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.form-block
+{
+    border: 1px solid #000;
+    background-color: #DCE6F1;
+    margin: 10px;
+    padding: 10px;
+}
+
+.datepicker *, .ui-select-container * {
+    box-sizing: border-box;
+}
+
+.datepicker .dropdown-menu {
+    border-color: #ccc !important;
+}
+
+.datepicker ul.dropdown-menu table:focus {
+    outline: 0px;
+}
+
+.datepicker ul button.btn-default {
+    border-color: transparent !important;
+}
+
+.datepicker input.form-control {
+    text-transform: uppercase;
+}
+
+.error {
+    color: red;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.error-text {
+    margin-top: 2px;
+    color: #b94a48;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.dialog-error .modal-header {
+    background-color: #d2322d;
+}
+
+.dialog-warning .modal-header {
+    background-color: #fea919;
+}
+
+.dialog-info .modal-header {
+    background-color: #954a81;
+}
+
+.dialog-notification .modal-header {
+    color: #fff;
+}
+
+.modified-info {
+    text-align: left;
+    font-size: 12px;
+    float: left;
+}
+
+    .modified-info ~ input[type="button"] {
+        float: right;
+    }
+
+.modal-header,
+.modal-body,
+.modal-footer {
+    padding: 10px;
+}
+
+.date-transform {
+    text-transform: uppercase;
+}
+
+/*context menu*/
+.menu-dots .ms-ellipsis-a {
+    /* height: 12px; */
+    cursor: pointer;
+}
+
+    .menu-dots .ms-ellipsis-a, .menu-dots .ms-ellipsis-a:visited {
+        color: #666666;
+    }
+
+.menu-dots .ms-ellipsis-icon {
+    top: -233px;
+}
+/*end context menu*/
+
+/************TinyMCE*************/
+.mce-content-body {
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.mce-panel {
+    background-image: none !important;
+    border-color: #ccc !important;
+}
+
+.mce-btn {
+    background-color: transparent !important;
+    background-image: none !important;
+    border-top-color: transparent !important;
+    border-bottom-color: transparent !important;
+    border-radius: 0px !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    border-right: 1px solid #ccc !important;
+}
+
+.mce-btn-group .mce-last, .mce-btn-group .mce-first {
+    border-radius: 0px !important;
+}
+
+.mce-btn-group .mce-first {
+    border-left-color: transparent !important;
+}
+/************End TinyMCE*********/

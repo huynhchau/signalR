@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://Hilton.EnterprisePortal.Services.Security/SecurityService" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://Hilton.EnterprisePortal.Services.Security/SecurityService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Hilton.EnterprisePortal.Services.Security/SecurityService">
+      <s:element name="CreateSessionWithSessionData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="astrUserName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateSessionWithSessionDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateSessionWithSessionDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SessionGetValue">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="astrSessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="astrValueName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SessionGetValueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionGetValueResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SessionSetValue">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="astrSessionID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="aintApplicationScopeID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="astrName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="astrValue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SessionSetValueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionSetValueResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HotelList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="astrSessionID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="aintTaskID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HotelListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HotelListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSelectedHotel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="astrSessionID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="aintTaskID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSelectedHotelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSelectedHotelResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HotelListAllStatuses">
+        <s:complexType />
+      </s:element>
+      <s:element name="HotelListAllStatusesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HotelListAllStatusesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HotelIsValid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="astrSessionID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="aintTaskID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="aintFacilityID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HotelIsValidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HotelIsValidResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="astrSessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupHotelList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="astrSessionID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="aintGroupID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupHotelListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupHotelListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BrandMgtTypeCombinationsByUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="astrSessionID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="aintTaskID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BrandMgtTypeCombinationsByUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BrandMgtTypeCombinationsByUserResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSecAppList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="aintUserNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSecAppListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSecAppListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifyAppAccess">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="aintUserNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="aintTaskID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifyAppAccessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VerifyAppAccessResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllUsersByTaskId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="aintTaskID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllUsersByTaskIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AllUsersByTaskIdResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateSessionWithSessionDataSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateSessionWithSessionData" />
+  </wsdl:message>
+  <wsdl:message name="CreateSessionWithSessionDataSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateSessionWithSessionDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SessionGetValueSoapIn">
+    <wsdl:part name="parameters" element="tns:SessionGetValue" />
+  </wsdl:message>
+  <wsdl:message name="SessionGetValueSoapOut">
+    <wsdl:part name="parameters" element="tns:SessionGetValueResponse" />
+  </wsdl:message>
+  <wsdl:message name="SessionSetValueSoapIn">
+    <wsdl:part name="parameters" element="tns:SessionSetValue" />
+  </wsdl:message>
+  <wsdl:message name="SessionSetValueSoapOut">
+    <wsdl:part name="parameters" element="tns:SessionSetValueResponse" />
+  </wsdl:message>
+  <wsdl:message name="HotelListSoapIn">
+    <wsdl:part name="parameters" element="tns:HotelList" />
+  </wsdl:message>
+  <wsdl:message name="HotelListSoapOut">
+    <wsdl:part name="parameters" element="tns:HotelListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSelectedHotelSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSelectedHotel" />
+  </wsdl:message>
+  <wsdl:message name="GetSelectedHotelSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSelectedHotelResponse" />
+  </wsdl:message>
+  <wsdl:message name="HotelListAllStatusesSoapIn">
+    <wsdl:part name="parameters" element="tns:HotelListAllStatuses" />
+  </wsdl:message>
+  <wsdl:message name="HotelListAllStatusesSoapOut">
+    <wsdl:part name="parameters" element="tns:HotelListAllStatusesResponse" />
+  </wsdl:message>
+  <wsdl:message name="HotelIsValidSoapIn">
+    <wsdl:part name="parameters" element="tns:HotelIsValid" />
+  </wsdl:message>
+  <wsdl:message name="HotelIsValidSoapOut">
+    <wsdl:part name="parameters" element="tns:HotelIsValidResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupListSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupList" />
+  </wsdl:message>
+  <wsdl:message name="GroupListSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupHotelListSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupHotelList" />
+  </wsdl:message>
+  <wsdl:message name="GroupHotelListSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupHotelListResponse" />
+  </wsdl:message>
+  <wsdl:message name="BrandMgtTypeCombinationsByUserSoapIn">
+    <wsdl:part name="parameters" element="tns:BrandMgtTypeCombinationsByUser" />
+  </wsdl:message>
+  <wsdl:message name="BrandMgtTypeCombinationsByUserSoapOut">
+    <wsdl:part name="parameters" element="tns:BrandMgtTypeCombinationsByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSecAppListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSecAppList" />
+  </wsdl:message>
+  <wsdl:message name="GetSecAppListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSecAppListResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerifyAppAccessSoapIn">
+    <wsdl:part name="parameters" element="tns:VerifyAppAccess" />
+  </wsdl:message>
+  <wsdl:message name="VerifyAppAccessSoapOut">
+    <wsdl:part name="parameters" element="tns:VerifyAppAccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="AllUsersByTaskIdSoapIn">
+    <wsdl:part name="parameters" element="tns:AllUsersByTaskId" />
+  </wsdl:message>
+  <wsdl:message name="AllUsersByTaskIdSoapOut">
+    <wsdl:part name="parameters" element="tns:AllUsersByTaskIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="clsPortalSecurityServiceSoap">
+    <wsdl:operation name="CreateSessionWithSessionData">
+      <wsdl:input message="tns:CreateSessionWithSessionDataSoapIn" />
+      <wsdl:output message="tns:CreateSessionWithSessionDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SessionGetValue">
+      <wsdl:input message="tns:SessionGetValueSoapIn" />
+      <wsdl:output message="tns:SessionGetValueSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SessionSetValue">
+      <wsdl:input message="tns:SessionSetValueSoapIn" />
+      <wsdl:output message="tns:SessionSetValueSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HotelList">
+      <wsdl:input message="tns:HotelListSoapIn" />
+      <wsdl:output message="tns:HotelListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedHotel">
+      <wsdl:input message="tns:GetSelectedHotelSoapIn" />
+      <wsdl:output message="tns:GetSelectedHotelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HotelListAllStatuses">
+      <wsdl:input message="tns:HotelListAllStatusesSoapIn" />
+      <wsdl:output message="tns:HotelListAllStatusesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HotelIsValid">
+      <wsdl:input message="tns:HotelIsValidSoapIn" />
+      <wsdl:output message="tns:HotelIsValidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupList">
+      <wsdl:input message="tns:GroupListSoapIn" />
+      <wsdl:output message="tns:GroupListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupHotelList">
+      <wsdl:input message="tns:GroupHotelListSoapIn" />
+      <wsdl:output message="tns:GroupHotelListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BrandMgtTypeCombinationsByUser">
+      <wsdl:input message="tns:BrandMgtTypeCombinationsByUserSoapIn" />
+      <wsdl:output message="tns:BrandMgtTypeCombinationsByUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSecAppList">
+      <wsdl:input message="tns:GetSecAppListSoapIn" />
+      <wsdl:output message="tns:GetSecAppListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyAppAccess">
+      <wsdl:input message="tns:VerifyAppAccessSoapIn" />
+      <wsdl:output message="tns:VerifyAppAccessSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllUsersByTaskId">
+      <wsdl:input message="tns:AllUsersByTaskIdSoapIn" />
+      <wsdl:output message="tns:AllUsersByTaskIdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="clsPortalSecurityServiceSoap" type="tns:clsPortalSecurityServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateSessionWithSessionData">
+      <soap:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/CreateSessionWithSessionData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionGetValue">
+      <soap:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/SessionGetValue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionSetValue">
+      <soap:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/SessionSetValue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HotelList">
+      <soap:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/HotelList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedHotel">
+      <soap:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/GetSelectedHotel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HotelListAllStatuses">
+      <soap:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/HotelListAllStatuses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HotelIsValid">
+      <soap:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/HotelIsValid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupList">
+      <soap:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/GroupList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupHotelList">
+      <soap:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/GroupHotelList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BrandMgtTypeCombinationsByUser">
+      <soap:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/BrandMgtTypeCombinationsByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSecAppList">
+      <soap:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/GetSecAppList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyAppAccess">
+      <soap:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/VerifyAppAccess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllUsersByTaskId">
+      <soap:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/AllUsersByTaskId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="clsPortalSecurityServiceSoap12" type="tns:clsPortalSecurityServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateSessionWithSessionData">
+      <soap12:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/CreateSessionWithSessionData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionGetValue">
+      <soap12:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/SessionGetValue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionSetValue">
+      <soap12:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/SessionSetValue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HotelList">
+      <soap12:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/HotelList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedHotel">
+      <soap12:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/GetSelectedHotel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HotelListAllStatuses">
+      <soap12:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/HotelListAllStatuses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HotelIsValid">
+      <soap12:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/HotelIsValid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupList">
+      <soap12:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/GroupList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupHotelList">
+      <soap12:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/GroupHotelList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BrandMgtTypeCombinationsByUser">
+      <soap12:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/BrandMgtTypeCombinationsByUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSecAppList">
+      <soap12:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/GetSecAppList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyAppAccess">
+      <soap12:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/VerifyAppAccess" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllUsersByTaskId">
+      <soap12:operation soapAction="http://Hilton.EnterprisePortal.Services.Security/SecurityService/AllUsersByTaskId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="clsPortalSecurityService">
+    <wsdl:port name="clsPortalSecurityServiceSoap" binding="tns:clsPortalSecurityServiceSoap">
+      <soap:address location="https://onqinsiderservices.hilton.com/PortalSecurityService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="clsPortalSecurityServiceSoap12" binding="tns:clsPortalSecurityServiceSoap12">
+      <soap12:address location="https://onqinsiderservices.hilton.com/PortalSecurityService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

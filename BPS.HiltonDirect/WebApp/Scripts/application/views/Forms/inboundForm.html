@@ -1,0 +1,32 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="form-group" show-errors>
+            <label class="control-label col-md-2">{{ ::"sales_rep_note" | bpsLocalize }}</label>
+            <div class="col-md-8">
+                <textarea ui-tinymce="tinymceOptions" class="form-control" name="txtDescription" ng-model="request.DirectLeadRequest.Note" bps-max-length="1000" />
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label class="control-label col-md-2">{{ ::"spr" | bpsLocalize }}</label>
+            <div class="col-md-2">
+                <ui-select name="admin4" ng-model="request.SPR">
+                    <ui-select-match>{{$select.selected.Name | bpsLocalize}}</ui-select-match>
+                    <ui-select-choices repeat="metho in lookup.Persons | orderBy:'Name' | filter: $select.search">
+                        <span ng-bind-html="metho.Name | bpsLocalize | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label class="control-label col-md-2">{{ ::"admin1" | bpsLocalize }}</label>
+            <div class="col-md-2">
+                <ui-select name="admin1" ng-model="request.Admin1">
+                    <ui-select-match>{{$select.selected.Name | bpsLocalize}}</ui-select-match>
+                    <ui-select-choices repeat="metho in lookup.Persons | orderBy:'Name' | filter: $select.search">
+                        <span ng-bind-html="metho.Name | bpsLocalize | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+    </div>
+</div>

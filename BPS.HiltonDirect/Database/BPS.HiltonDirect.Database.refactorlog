@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="de1f017e-a3d2-40ba-87a6-8282aa74ac8b" ChangeDateTime="09/13/2017 04:17:32">
+    <Property Name="ElementName" Value="[hd].[EmailAddresses].[LastUpdatedBy]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[hd].[EmailAddresses]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ModifiedBy" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="04986733-3400-44a8-80e9-32585acbfc4d" ChangeDateTime="09/13/2017 04:18:54">
+    <Property Name="ElementName" Value="[hd].[EmailAddresses].[ModifiedBy]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[hd].[EmailAddresses]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ModifiedById" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c0cf4cd2-1788-4113-be3c-1854973926d9" ChangeDateTime="09/13/2017 06:01:23">
+    <Property Name="ElementName" Value="[hd].[Requests].[FormType]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[hd].[Requests]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RequestType" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2940cdb4-cc57-4c61-861c-41883557fe6c" ChangeDateTime="09/13/2017 06:01:37">
+    <Property Name="ElementName" Value="[hd].[Requests].[EmailExtractID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[hd].[Requests]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EmailExtractId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0a3703d2-da99-4d00-9df0-fda4cde8e7b8" ChangeDateTime="09/13/2017 06:01:42">
+    <Property Name="ElementName" Value="[hd].[Requests].[DirectLeadID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[hd].[Requests]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DirectLeadId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="503a9620-0651-46e1-b39f-5dcc65f0fc57" ChangeDateTime="09/13/2017 06:22:02">
+    <Property Name="ElementName" Value="[hd].[Requests].[EmailExtractId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[hd].[Requests]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="eChannelRequestId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3ae1a295-c569-4a9e-9331-f27e854ef762" ChangeDateTime="09/13/2017 06:22:25">
+    <Property Name="ElementName" Value="[hd].[Requests].[eChannelRequestId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[hd].[Requests]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EchannelRequestId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a7c00005-4ca8-484b-be4c-f004877e86a7" ChangeDateTime="09/13/2017 06:26:23">
+    <Property Name="ElementName" Value="[hd].[EchannelRequests].[Admin1]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[hd].[EchannelRequests]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Admin1Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4971aec5-2ab8-4792-b7f6-cad2338bc276" ChangeDateTime="09/13/2017 06:26:25">
+    <Property Name="ElementName" Value="[hd].[EchannelRequests].[Admin2]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[hd].[EchannelRequests]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Admin2Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f1ca9979-6453-4a74-a996-4631e2aae24d" ChangeDateTime="09/13/2017 06:26:28">
+    <Property Name="ElementName" Value="[hd].[EchannelRequests].[Admin3]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[hd].[EchannelRequests]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Admin3Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cce3febf-0f75-4138-a07a-9b28ef777c25" ChangeDateTime="09/13/2017 06:26:30">
+    <Property Name="ElementName" Value="[hd].[EchannelRequests].[Admin4]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[hd].[EchannelRequests]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Admin4Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="50a53512-9140-49b3-b52a-41de3229f58c" ChangeDateTime="09/13/2017 06:26:32">
+    <Property Name="ElementName" Value="[hd].[EchannelRequests].[Admin5]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[hd].[EchannelRequests]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Admin5Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c6581908-2622-4b2b-935c-be167b8229d9" ChangeDateTime="09/13/2017 06:28:21">
+    <Property Name="ElementName" Value="[hd].[EchannelRequests].[FollowUpActivity]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[hd].[EchannelRequests]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FollowUpActivityId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3db51832-8f3e-4623-b14e-f409b23dc3ea" ChangeDateTime="09/13/2017 06:30:57">
+    <Property Name="ElementName" Value="[hd].[EchannelRequests].[Commisionable]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[hd].[EchannelRequests]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsCommissionable" />
+  </Operation>
+</Operations>

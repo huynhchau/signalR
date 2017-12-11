@@ -1,0 +1,81 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="form-group" show-errors>
+            <label class="control-label col-md-2">{{ ::"spr" | bpsLocalize }}</label>
+            <div class="col-md-2">
+                <ui-select name="admin4" ng-model="request.SPR" >
+                    <ui-select-match>{{$select.selected.Name | bpsLocalize}}</ui-select-match>
+                    <ui-select-choices repeat="metho in lookup.Persons | orderBy:'Name' | filter: $select.search">
+                        <span ng-bind-html="metho.Name | bpsLocalize | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label class="control-label col-md-2">{{ ::"admin1" | bpsLocalize }}</label>
+            <div class="col-md-2">
+                <ui-select name="admin1" ng-model="request.Admin1" >
+                    <ui-select-match>{{$select.selected.Name | bpsLocalize}}</ui-select-match>
+                    <ui-select-choices repeat="metho in lookup.Persons | orderBy:'Name' | filter: $select.search">
+                        <span ng-bind-html="metho.Name | bpsLocalize | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label class="control-label col-md-2">{{ ::"admin2" | bpsLocalize }}</label>
+            <div class="col-md-2">
+                <ui-select name="admin2" ng-model="request.EchannelRequest.Admin2" >
+                    <ui-select-match>{{$select.selected.Name | bpsLocalize}}</ui-select-match>
+                    <ui-select-choices repeat="metho in lookup.Persons | orderBy:'Name' | filter: $select.search">
+                        <span ng-bind-html="metho.Name | bpsLocalize | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label class="control-label col-md-2">{{ ::"admin3" | bpsLocalize }}</label>
+            <div class="col-md-2">
+                <ui-select name="admin3" ng-model="request.EchannelRequest.Admin3" >
+                    <ui-select-match>{{$select.selected.Name | bpsLocalize}}</ui-select-match>
+                    <ui-select-choices repeat="metho in lookup.Persons | orderBy:'Name' | filter: $select.search">
+                        <span ng-bind-html="metho.Name | bpsLocalize | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label class="control-label col-md-2">{{ ::"admin4" | bpsLocalize }}</label>
+            <div class="col-md-2">
+                <ui-select name="admin4" ng-model="request.EchannelRequest.Admin4" >
+                    <ui-select-match>{{$select.selected.Name | bpsLocalize}}</ui-select-match>
+                    <ui-select-choices repeat="metho in lookup.Persons | orderBy:'Name' | filter: $select.search">
+                        <span ng-bind-html="metho.Name | bpsLocalize | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label class="control-label col-md-2">{{ ::"admin5" | bpsLocalize }}</label>
+            <div class="col-md-2">
+                <ui-select name="admin5" ng-model="request.EchannelRequest.Admin5" >
+                    <ui-select-match>{{$select.selected.Name | bpsLocalize}}</ui-select-match>
+                    <ui-select-choices repeat="metho in lookup.Persons | orderBy:'Name' | filter: $select.search">
+                        <span ng-bind-html="metho.Name | bpsLocalize | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label class="control-label col-md-2" for="DueDate">{{ ::"due_date" | bpsLocalize }}</label>
+            <div class="col-md-2 datepicker">
+                <p class="input-group">
+                    <input type="text" class="form-control" name="DueDate" ng-model="request.TaskDueDate" ng-required="true" datepicker-popup datepicker-options="dateOptions" bps-date-format-msg is-open="datepickers.dueDateOpened" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="dueDateOpen($event)"><i class="fa fa-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

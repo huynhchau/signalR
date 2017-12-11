@@ -1,0 +1,750 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HiltonDirectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DirectLeadRequests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SPRId" Type="varchar" MaxLength="100" />
+          <Property Name="Admin1Id" Type="varchar" MaxLength="100" />
+          <Property Name="Note" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="EchannelRequests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SPRId" Type="varchar" MaxLength="100" />
+          <Property Name="Admin1Id" Type="varchar" MaxLength="100" />
+          <Property Name="Admin2Id" Type="varchar" MaxLength="100" />
+          <Property Name="Admin3Id" Type="varchar" MaxLength="100" />
+          <Property Name="Admin4Id" Type="varchar" MaxLength="100" />
+          <Property Name="Admin5Id" Type="varchar" MaxLength="100" />
+          <Property Name="DecisionDueDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="FollowUpActivityId" Type="int" />
+          <Property Name="IsCommissionable" Type="bit" />
+          <Property Name="CommissionRate" Type="float" />
+          <Property Name="IsCreateTask" Type="bit" />
+          <Property Name="TaskDueDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="MeetingClassId" Type="int" />
+        </EntityType>
+        <EntityType Name="FollowUpActivities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="MeetingClasses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Persons">
+          <Key>
+            <PropertyRef Name="EmailAddress" />
+          </Key>
+          <Property Name="EmailAddress" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="OfficeLocation" Type="varchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="ModifiedById" Type="varchar" MaxLength="100" />
+          <Property Name="ModifiedDate" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="Requests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EchannelRequestId" Type="int" />
+          <Property Name="DirectLeadId" Type="int" />
+          <Property Name="RequestType" Type="int" />
+          <Property Name="CreatedById" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ModifiedById" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DirectLeadRequests_Admin1">
+          <End Role="Persons" Type="Self.Persons" Multiplicity="0..1" />
+          <End Role="DirectLeadRequests" Type="Self.DirectLeadRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="DirectLeadRequests">
+              <PropertyRef Name="Admin1Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DirectLeadRequests_SPRPersons">
+          <End Role="Persons" Type="Self.Persons" Multiplicity="0..1" />
+          <End Role="DirectLeadRequests" Type="Self.DirectLeadRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="DirectLeadRequests">
+              <PropertyRef Name="SPRId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EchannelRequests_Admin1">
+          <End Role="Persons" Type="Self.Persons" Multiplicity="0..1" />
+          <End Role="EchannelRequests" Type="Self.EchannelRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="EchannelRequests">
+              <PropertyRef Name="Admin1Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EchannelRequests_Admin2">
+          <End Role="Persons" Type="Self.Persons" Multiplicity="0..1" />
+          <End Role="EchannelRequests" Type="Self.EchannelRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="EchannelRequests">
+              <PropertyRef Name="Admin2Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EchannelRequests_Admin3">
+          <End Role="Persons" Type="Self.Persons" Multiplicity="0..1" />
+          <End Role="EchannelRequests" Type="Self.EchannelRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="EchannelRequests">
+              <PropertyRef Name="Admin3Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EchannelRequests_Admin4">
+          <End Role="Persons" Type="Self.Persons" Multiplicity="0..1" />
+          <End Role="EchannelRequests" Type="Self.EchannelRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="EchannelRequests">
+              <PropertyRef Name="Admin4Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EchannelRequests_Admin5">
+          <End Role="Persons" Type="Self.Persons" Multiplicity="0..1" />
+          <End Role="EchannelRequests" Type="Self.EchannelRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="EchannelRequests">
+              <PropertyRef Name="Admin5Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EchannelRequests_FollowUpActivities">
+          <End Role="FollowUpActivities" Type="Self.FollowUpActivities" Multiplicity="0..1" />
+          <End Role="EchannelRequests" Type="Self.EchannelRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FollowUpActivities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EchannelRequests">
+              <PropertyRef Name="FollowUpActivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EchannelRequests_MeetingClasses">
+          <End Role="MeetingClasses" Type="Self.MeetingClasses" Multiplicity="0..1" />
+          <End Role="EchannelRequests" Type="Self.EchannelRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeetingClasses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EchannelRequests">
+              <PropertyRef Name="MeetingClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EchannelRequests_SPRPersons">
+          <End Role="Persons" Type="Self.Persons" Multiplicity="0..1" />
+          <End Role="EchannelRequests" Type="Self.EchannelRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="EchannelRequests">
+              <PropertyRef Name="SPRId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requests_CreatedPersons">
+          <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
+          <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="Requests">
+              <PropertyRef Name="CreatedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requests_DirectLeadRequests">
+          <End Role="DirectLeadRequests" Type="Self.DirectLeadRequests" Multiplicity="0..1" />
+          <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirectLeadRequests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Requests">
+              <PropertyRef Name="DirectLeadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requests_EchannelRequests">
+          <End Role="EchannelRequests" Type="Self.EchannelRequests" Multiplicity="0..1" />
+          <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EchannelRequests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Requests">
+              <PropertyRef Name="EchannelRequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requests_ModifiedPersons">
+          <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
+          <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="Requests">
+              <PropertyRef Name="ModifiedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HiltonDirectModelStoreContainer">
+          <EntitySet Name="DirectLeadRequests" EntityType="Self.DirectLeadRequests" Schema="hd" store:Type="Tables" />
+          <EntitySet Name="EchannelRequests" EntityType="Self.EchannelRequests" Schema="hd" store:Type="Tables" />
+          <EntitySet Name="FollowUpActivities" EntityType="Self.FollowUpActivities" Schema="hd" store:Type="Tables" />
+          <EntitySet Name="MeetingClasses" EntityType="Self.MeetingClasses" Schema="hd" store:Type="Tables" />
+          <EntitySet Name="Persons" EntityType="Self.Persons" Schema="hd" store:Type="Tables" />
+          <EntitySet Name="Requests" EntityType="Self.Requests" Schema="hd" store:Type="Tables" />
+          <AssociationSet Name="FK_DirectLeadRequests_Admin1" Association="Self.FK_DirectLeadRequests_Admin1">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="DirectLeadRequests" EntitySet="DirectLeadRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DirectLeadRequests_SPRPersons" Association="Self.FK_DirectLeadRequests_SPRPersons">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="DirectLeadRequests" EntitySet="DirectLeadRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EchannelRequests_Admin1" Association="Self.FK_EchannelRequests_Admin1">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="EchannelRequests" EntitySet="EchannelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EchannelRequests_Admin2" Association="Self.FK_EchannelRequests_Admin2">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="EchannelRequests" EntitySet="EchannelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EchannelRequests_Admin3" Association="Self.FK_EchannelRequests_Admin3">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="EchannelRequests" EntitySet="EchannelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EchannelRequests_Admin4" Association="Self.FK_EchannelRequests_Admin4">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="EchannelRequests" EntitySet="EchannelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EchannelRequests_Admin5" Association="Self.FK_EchannelRequests_Admin5">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="EchannelRequests" EntitySet="EchannelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EchannelRequests_FollowUpActivities" Association="Self.FK_EchannelRequests_FollowUpActivities">
+            <End Role="FollowUpActivities" EntitySet="FollowUpActivities" />
+            <End Role="EchannelRequests" EntitySet="EchannelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EchannelRequests_MeetingClasses" Association="Self.FK_EchannelRequests_MeetingClasses">
+            <End Role="MeetingClasses" EntitySet="MeetingClasses" />
+            <End Role="EchannelRequests" EntitySet="EchannelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EchannelRequests_SPRPersons" Association="Self.FK_EchannelRequests_SPRPersons">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="EchannelRequests" EntitySet="EchannelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_CreatedPersons" Association="Self.FK_Requests_CreatedPersons">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="Requests" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_DirectLeadRequests" Association="Self.FK_Requests_DirectLeadRequests">
+            <End Role="DirectLeadRequests" EntitySet="DirectLeadRequests" />
+            <End Role="Requests" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_EchannelRequests" Association="Self.FK_Requests_EchannelRequests">
+            <End Role="EchannelRequests" EntitySet="EchannelRequests" />
+            <End Role="Requests" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_ModifiedPersons" Association="Self.FK_Requests_ModifiedPersons">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="Requests" EntitySet="Requests" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HiltonDirectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HiltonDirectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DirectLeadRequests" EntityType="HiltonDirectModel.DirectLeadRequest" />
+          <EntitySet Name="EchannelRequests" EntityType="HiltonDirectModel.EchannelRequest" />
+          <EntitySet Name="FollowUpActivities" EntityType="HiltonDirectModel.FollowUpActivity" />
+          <EntitySet Name="MeetingClasses" EntityType="HiltonDirectModel.MeetingClass" />
+          <EntitySet Name="Persons" EntityType="HiltonDirectModel.Person" />
+          <EntitySet Name="Requests" EntityType="HiltonDirectModel.Request" />
+          <AssociationSet Name="FK_DirectLeadRequests_Admin1" Association="HiltonDirectModel.FK_DirectLeadRequests_Admin1">
+            <End Role="Person" EntitySet="Persons" />
+            <End Role="DirectLeadRequest" EntitySet="DirectLeadRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DirectLeadRequests_SPRPersons" Association="HiltonDirectModel.FK_DirectLeadRequests_SPRPersons">
+            <End Role="Person" EntitySet="Persons" />
+            <End Role="DirectLeadRequest" EntitySet="DirectLeadRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_DirectLeadRequests" Association="HiltonDirectModel.FK_Requests_DirectLeadRequests">
+            <End Role="DirectLeadRequest" EntitySet="DirectLeadRequests" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EchannelRequests_Admin1" Association="HiltonDirectModel.FK_EchannelRequests_Admin1">
+            <End Role="Person" EntitySet="Persons" />
+            <End Role="EchannelRequest" EntitySet="EchannelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EchannelRequests_Admin2" Association="HiltonDirectModel.FK_EchannelRequests_Admin2">
+            <End Role="Person" EntitySet="Persons" />
+            <End Role="EchannelRequest" EntitySet="EchannelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EchannelRequests_Admin3" Association="HiltonDirectModel.FK_EchannelRequests_Admin3">
+            <End Role="Person" EntitySet="Persons" />
+            <End Role="EchannelRequest" EntitySet="EchannelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EchannelRequests_Admin4" Association="HiltonDirectModel.FK_EchannelRequests_Admin4">
+            <End Role="Person" EntitySet="Persons" />
+            <End Role="EchannelRequest" EntitySet="EchannelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EchannelRequests_Admin5" Association="HiltonDirectModel.FK_EchannelRequests_Admin5">
+            <End Role="Person" EntitySet="Persons" />
+            <End Role="EchannelRequest" EntitySet="EchannelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EchannelRequests_FollowUpActivities" Association="HiltonDirectModel.FK_EchannelRequests_FollowUpActivities">
+            <End Role="FollowUpActivity" EntitySet="FollowUpActivities" />
+            <End Role="EchannelRequest" EntitySet="EchannelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EchannelRequests_MeetingClasses" Association="HiltonDirectModel.FK_EchannelRequests_MeetingClasses">
+            <End Role="MeetingClass" EntitySet="MeetingClasses" />
+            <End Role="EchannelRequest" EntitySet="EchannelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EchannelRequests_SPRPersons" Association="HiltonDirectModel.FK_EchannelRequests_SPRPersons">
+            <End Role="Person" EntitySet="Persons" />
+            <End Role="EchannelRequest" EntitySet="EchannelRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_EchannelRequests" Association="HiltonDirectModel.FK_Requests_EchannelRequests">
+            <End Role="EchannelRequest" EntitySet="EchannelRequests" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_CreatedPersons" Association="HiltonDirectModel.FK_Requests_CreatedPersons">
+            <End Role="Person" EntitySet="Persons" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_ModifiedPersons" Association="HiltonDirectModel.FK_Requests_ModifiedPersons">
+            <End Role="Person" EntitySet="Persons" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+        </EntityContainer>
+        <EnumType Name="RequestType" a:ExternalTypeName="BPS.HiltonDirect.Model.RequestType" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+        <EntityType Name="DirectLeadRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SPRId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Admin1Id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Admin1" Relationship="HiltonDirectModel.FK_DirectLeadRequests_Admin1" FromRole="DirectLeadRequest" ToRole="Person" />
+          <NavigationProperty Name="SPRPerson" Relationship="HiltonDirectModel.FK_DirectLeadRequests_SPRPersons" FromRole="DirectLeadRequest" ToRole="Person" />
+          <NavigationProperty Name="Requests" Relationship="HiltonDirectModel.FK_Requests_DirectLeadRequests" FromRole="DirectLeadRequest" ToRole="Request" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EchannelRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SPRId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Admin1Id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Admin2Id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Admin3Id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Admin4Id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Admin5Id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DecisionDueDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="FollowUpActivityId" Type="Int32" />
+          <Property Name="IsCommissionable" Type="Boolean" />
+          <Property Name="CommissionRate" Type="Double" />
+          <Property Name="IsCreateTask" Type="Boolean" />
+          <Property Name="TaskDueDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="MeetingClassId" Type="Int32" />
+          <NavigationProperty Name="Admin1" Relationship="HiltonDirectModel.FK_EchannelRequests_Admin1" FromRole="EchannelRequest" ToRole="Person" />
+          <NavigationProperty Name="Admin2" Relationship="HiltonDirectModel.FK_EchannelRequests_Admin2" FromRole="EchannelRequest" ToRole="Person" />
+          <NavigationProperty Name="Admin3" Relationship="HiltonDirectModel.FK_EchannelRequests_Admin3" FromRole="EchannelRequest" ToRole="Person" />
+          <NavigationProperty Name="Admin4" Relationship="HiltonDirectModel.FK_EchannelRequests_Admin4" FromRole="EchannelRequest" ToRole="Person" />
+          <NavigationProperty Name="Admin5" Relationship="HiltonDirectModel.FK_EchannelRequests_Admin5" FromRole="EchannelRequest" ToRole="Person" />
+          <NavigationProperty Name="FollowUpActivity" Relationship="HiltonDirectModel.FK_EchannelRequests_FollowUpActivities" FromRole="EchannelRequest" ToRole="FollowUpActivity" />
+          <NavigationProperty Name="MeetingClass" Relationship="HiltonDirectModel.FK_EchannelRequests_MeetingClasses" FromRole="EchannelRequest" ToRole="MeetingClass" />
+          <NavigationProperty Name="SPRPerson" Relationship="HiltonDirectModel.FK_EchannelRequests_SPRPersons" FromRole="EchannelRequest" ToRole="Person" />
+          <NavigationProperty Name="Requests" Relationship="HiltonDirectModel.FK_Requests_EchannelRequests" FromRole="EchannelRequest" ToRole="Request" />
+        </EntityType>
+        <EntityType Name="FollowUpActivity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="EchannelRequests" Relationship="HiltonDirectModel.FK_EchannelRequests_FollowUpActivities" FromRole="FollowUpActivity" ToRole="EchannelRequest" />
+        </EntityType>
+        <EntityType Name="MeetingClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="EchannelRequests" Relationship="HiltonDirectModel.FK_EchannelRequests_MeetingClasses" FromRole="MeetingClass" ToRole="EchannelRequest" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="EmailAddress" />
+          </Key>
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OfficeLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="ModifiedById" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="DirectLeadRequests" Relationship="HiltonDirectModel.FK_DirectLeadRequests_Admin1" FromRole="Person" ToRole="DirectLeadRequest" />
+          <NavigationProperty Name="DirectLeadRequests1" Relationship="HiltonDirectModel.FK_DirectLeadRequests_SPRPersons" FromRole="Person" ToRole="DirectLeadRequest" />
+          <NavigationProperty Name="EchannelRequests" Relationship="HiltonDirectModel.FK_EchannelRequests_Admin1" FromRole="Person" ToRole="EchannelRequest" />
+          <NavigationProperty Name="EchannelRequests1" Relationship="HiltonDirectModel.FK_EchannelRequests_Admin2" FromRole="Person" ToRole="EchannelRequest" />
+          <NavigationProperty Name="EchannelRequests2" Relationship="HiltonDirectModel.FK_EchannelRequests_Admin3" FromRole="Person" ToRole="EchannelRequest" />
+          <NavigationProperty Name="EchannelRequests3" Relationship="HiltonDirectModel.FK_EchannelRequests_Admin4" FromRole="Person" ToRole="EchannelRequest" />
+          <NavigationProperty Name="EchannelRequests4" Relationship="HiltonDirectModel.FK_EchannelRequests_Admin5" FromRole="Person" ToRole="EchannelRequest" />
+          <NavigationProperty Name="EchannelRequests5" Relationship="HiltonDirectModel.FK_EchannelRequests_SPRPersons" FromRole="Person" ToRole="EchannelRequest" />
+          <NavigationProperty Name="Requests" Relationship="HiltonDirectModel.FK_Requests_CreatedPersons" FromRole="Person" ToRole="Request" />
+          <NavigationProperty Name="Requests1" Relationship="HiltonDirectModel.FK_Requests_ModifiedPersons" FromRole="Person" ToRole="Request" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EchannelRequestId" Type="Int32" />
+          <Property Name="DirectLeadId" Type="Int32" />
+          <Property Name="RequestType" Type="HiltonDirectModel.RequestType" />
+          <Property Name="CreatedById" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedById" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="ModifiedDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <NavigationProperty Name="DirectLeadRequest" Relationship="HiltonDirectModel.FK_Requests_DirectLeadRequests" FromRole="Request" ToRole="DirectLeadRequest" />
+          <NavigationProperty Name="EchannelRequest" Relationship="HiltonDirectModel.FK_Requests_EchannelRequests" FromRole="Request" ToRole="EchannelRequest" />
+          <NavigationProperty Name="CreatedBy" Relationship="HiltonDirectModel.FK_Requests_CreatedPersons" FromRole="Request" ToRole="Person" />
+          <NavigationProperty Name="ModifiedBy" Relationship="HiltonDirectModel.FK_Requests_ModifiedPersons" FromRole="Request" ToRole="Person" />
+        </EntityType>
+        <Association Name="FK_DirectLeadRequests_Admin1">
+          <End Type="HiltonDirectModel.Person" Role="Person" Multiplicity="0..1" />
+          <End Type="HiltonDirectModel.DirectLeadRequest" Role="DirectLeadRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="DirectLeadRequest">
+              <PropertyRef Name="Admin1Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DirectLeadRequests_SPRPersons">
+          <End Type="HiltonDirectModel.Person" Role="Person" Multiplicity="0..1" />
+          <End Type="HiltonDirectModel.DirectLeadRequest" Role="DirectLeadRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="DirectLeadRequest">
+              <PropertyRef Name="SPRId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requests_DirectLeadRequests">
+          <End Type="HiltonDirectModel.DirectLeadRequest" Role="DirectLeadRequest" Multiplicity="0..1" />
+          <End Type="HiltonDirectModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DirectLeadRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="DirectLeadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EchannelRequests_Admin1">
+          <End Type="HiltonDirectModel.Person" Role="Person" Multiplicity="0..1" />
+          <End Type="HiltonDirectModel.EchannelRequest" Role="EchannelRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="EchannelRequest">
+              <PropertyRef Name="Admin1Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EchannelRequests_Admin2">
+          <End Type="HiltonDirectModel.Person" Role="Person" Multiplicity="0..1" />
+          <End Type="HiltonDirectModel.EchannelRequest" Role="EchannelRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="EchannelRequest">
+              <PropertyRef Name="Admin2Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EchannelRequests_Admin3">
+          <End Type="HiltonDirectModel.Person" Role="Person" Multiplicity="0..1" />
+          <End Type="HiltonDirectModel.EchannelRequest" Role="EchannelRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="EchannelRequest">
+              <PropertyRef Name="Admin3Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EchannelRequests_Admin4">
+          <End Type="HiltonDirectModel.Person" Role="Person" Multiplicity="0..1" />
+          <End Type="HiltonDirectModel.EchannelRequest" Role="EchannelRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="EchannelRequest">
+              <PropertyRef Name="Admin4Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EchannelRequests_Admin5">
+          <End Type="HiltonDirectModel.Person" Role="Person" Multiplicity="0..1" />
+          <End Type="HiltonDirectModel.EchannelRequest" Role="EchannelRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="EchannelRequest">
+              <PropertyRef Name="Admin5Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EchannelRequests_FollowUpActivities">
+          <End Type="HiltonDirectModel.FollowUpActivity" Role="FollowUpActivity" Multiplicity="0..1" />
+          <End Type="HiltonDirectModel.EchannelRequest" Role="EchannelRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FollowUpActivity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EchannelRequest">
+              <PropertyRef Name="FollowUpActivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EchannelRequests_MeetingClasses">
+          <End Type="HiltonDirectModel.MeetingClass" Role="MeetingClass" Multiplicity="0..1" />
+          <End Type="HiltonDirectModel.EchannelRequest" Role="EchannelRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeetingClass">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EchannelRequest">
+              <PropertyRef Name="MeetingClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EchannelRequests_SPRPersons">
+          <End Type="HiltonDirectModel.Person" Role="Person" Multiplicity="0..1" />
+          <End Type="HiltonDirectModel.EchannelRequest" Role="EchannelRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="EchannelRequest">
+              <PropertyRef Name="SPRId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requests_EchannelRequests">
+          <End Type="HiltonDirectModel.EchannelRequest" Role="EchannelRequest" Multiplicity="0..1" />
+          <End Type="HiltonDirectModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EchannelRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="EchannelRequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requests_CreatedPersons">
+          <End Type="HiltonDirectModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="HiltonDirectModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="CreatedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requests_ModifiedPersons">
+          <End Type="HiltonDirectModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="HiltonDirectModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="EmailAddress" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="ModifiedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HiltonDirectModelStoreContainer" CdmEntityContainer="HiltonDirectEntities">
+          <EntitySetMapping Name="DirectLeadRequests">
+            <EntityTypeMapping TypeName="HiltonDirectModel.DirectLeadRequest">
+              <MappingFragment StoreEntitySet="DirectLeadRequests">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Admin1Id" ColumnName="Admin1Id" />
+                <ScalarProperty Name="SPRId" ColumnName="SPRId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EchannelRequests">
+            <EntityTypeMapping TypeName="HiltonDirectModel.EchannelRequest">
+              <MappingFragment StoreEntitySet="EchannelRequests">
+                <ScalarProperty Name="MeetingClassId" ColumnName="MeetingClassId" />
+                <ScalarProperty Name="TaskDueDate" ColumnName="TaskDueDate" />
+                <ScalarProperty Name="IsCreateTask" ColumnName="IsCreateTask" />
+                <ScalarProperty Name="CommissionRate" ColumnName="CommissionRate" />
+                <ScalarProperty Name="IsCommissionable" ColumnName="IsCommissionable" />
+                <ScalarProperty Name="FollowUpActivityId" ColumnName="FollowUpActivityId" />
+                <ScalarProperty Name="DecisionDueDate" ColumnName="DecisionDueDate" />
+                <ScalarProperty Name="Admin5Id" ColumnName="Admin5Id" />
+                <ScalarProperty Name="Admin4Id" ColumnName="Admin4Id" />
+                <ScalarProperty Name="Admin3Id" ColumnName="Admin3Id" />
+                <ScalarProperty Name="Admin2Id" ColumnName="Admin2Id" />
+                <ScalarProperty Name="Admin1Id" ColumnName="Admin1Id" />
+                <ScalarProperty Name="SPRId" ColumnName="SPRId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FollowUpActivities">
+            <EntityTypeMapping TypeName="HiltonDirectModel.FollowUpActivity">
+              <MappingFragment StoreEntitySet="FollowUpActivities">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeetingClasses">
+            <EntityTypeMapping TypeName="HiltonDirectModel.MeetingClass">
+              <MappingFragment StoreEntitySet="MeetingClasses">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persons">
+            <EntityTypeMapping TypeName="HiltonDirectModel.Person">
+              <MappingFragment StoreEntitySet="Persons">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedById" ColumnName="ModifiedById" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OfficeLocation" ColumnName="OfficeLocation" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requests">
+            <EntityTypeMapping TypeName="HiltonDirectModel.Request">
+              <MappingFragment StoreEntitySet="Requests">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedById" ColumnName="ModifiedById" />
+                <ScalarProperty Name="CreatedById" ColumnName="CreatedById" />
+                <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+                <ScalarProperty Name="DirectLeadId" ColumnName="DirectLeadId" />
+                <ScalarProperty Name="EchannelRequestId" ColumnName="EchannelRequestId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

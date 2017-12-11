@@ -1,0 +1,36 @@
+﻿<div>
+    <form name="form.sform" class="form-horizontal" bps-form-handle-validation>
+        <div class="row">
+            <div class="col-md-3">&nbsp;</div>
+            <div class="col-md-6">
+                <div class="form-group" show-errors>
+                    <label class="control-label col-md-8" for="RequestType" style="text-align: right;">{{ ::"form_option" | bpsLocalize }}</label>
+                    <div class="col-md-3">
+                        <ui-select name="RequestType" ng-model="form.type" required style="width: 100px;" ng-change="loadForm()">
+                            <ui-select-match>{{$select.selected.Name | bpsLocalize}}</ui-select-match>
+                            <ui-select-choices repeat="metho in lookup.RequestTypes | orderBy:'Name' | filter: $select.search">
+                                <span ng-bind-html="metho.Name | bpsLocalize | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">&nbsp;</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center form-title">{{ ::"hilton_direct_form_title" | bpsLocalize }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-block" ui-view></div>
+            </div>
+        </div>
+        <div class="row modal-footer">
+            <div class="col-md-12 text-right">
+                <a class="btn btn-default" ui-sref="requests">{{::'list_view' | bpsLocalize}}</a>
+                <button type="button" class="btn btn-default" ng-click="submit()">{{::'ok' | bpsLocalize}}</button>
+                <button type="button" class="btn btn-default" ng-click="cancel()">{{::'clear' | bpsLocalize}}</button>
+            </div>
+        </div>
+    </form>
+</div>
